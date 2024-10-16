@@ -1,9 +1,8 @@
+using System.Xml;
+using iText.StyledXmlParser.Jsoup.Nodes;
+
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
-
-	using Node = org.w3c.dom.Node;
-	using NodeList = org.w3c.dom.NodeList;
-
 	/// <summary>
 	///*
 	/// a named contact person in an organisation
@@ -66,69 +65,62 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		///*
 		/// XML parsing constructor </summary>
 		/// <param name="nodes"> the nodelist returned e.g. from xpath </param>
-		public Contact(NodeList nodes)
+		public Contact(XmlNodeList nodes)
 		{
-			if (nodes.getLength() > 0)
+			if (nodes.Count > 0)
 			{
-
-				/*
-							   will parse sth like
-								<ram:DefinedTradeContact>
-									<ram:PersonName>Name</ram:PersonName>
-									<ram:TelephoneUniversalCommunication>
-										<ram:CompleteNumber>069 100-0</ram:CompleteNumber>
-									</ram:TelephoneUniversalCommunication>
-									<ram:EmailURIUniversalCommunication>
-										<ram:URIID>test@example.com</ram:URIID>
-									</ram:EmailURIUniversalCommunication>
-								</ram:DefinedTradeContact>
+                /*
+			   will parse sth like
+				<ram:DefinedTradeContact>
+					<ram:PersonName>Name</ram:PersonName>
+					<ram:TelephoneUniversalCommunication>
+						<ram:CompleteNumber>069 100-0</ram:CompleteNumber>
+					</ram:TelephoneUniversalCommunication>
+					<ram:EmailURIUniversalCommunication>
+						<ram:URIID>test@example.com</ram:URIID>
+					</ram:EmailURIUniversalCommunication>
+				</ram:DefinedTradeContact>
 				 */
-				for (int nodeIndex = 0; nodeIndex < nodes.getLength(); nodeIndex++)
-				{
-					//nodes.item(i).getTextContent())) {
-					Node currentItemNode = nodes.item(nodeIndex);
-					if (currentItemNode.getLocalName() != null)
-					{
-
-						if (currentItemNode.getLocalName().Equals("PersonName"))
-						{
-							setName(currentItemNode.getFirstChild().getNodeValue());
-						}
-						if (currentItemNode.getLocalName().Equals("TelephoneUniversalCommunication"))
-						{
-							NodeList tel = currentItemNode.getChildNodes();
-							for (int telChildIndex = 0; telChildIndex < tel.getLength(); telChildIndex++)
-							{
-								if (tel.item(telChildIndex).getLocalName() != null)
-								{
-									if (tel.item(telChildIndex).getLocalName().Equals("CompleteNumber"))
-									{
-										setPhone(tel.item(telChildIndex).getTextContent());
-									}
-								}
-							}
-						}
-						if (currentItemNode.getLocalName().Equals("EmailURIUniversalCommunication"))
-						{
-							NodeList email = currentItemNode.getChildNodes();
-							for (int emailChildIndex = 0; emailChildIndex < email.getLength(); emailChildIndex++)
-							{
-								if (email.item(emailChildIndex).getLocalName() != null)
-								{
-									if (email.item(emailChildIndex).getLocalName().Equals("URIID"))
-									{
-										setEMail(email.item(emailChildIndex).getTextContent());
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+                for (int nodeIndex = 0; nodeIndex < nodes.Count; nodeIndex++)
+                {
+                    XmlNode currentItemNode = nodes[nodeIndex];
+                    if (!string.IsNullOrEmpty(currentItemNode.LocalName))
+                    {
+                        if (currentItemNode.LocalName.Equals("PersonName"))
+                        {
+                            name = currentItemNode.FirstChild.Value;
+                        }
+                        if (currentItemNode.LocalName.Equals("TelephoneUniversalCommunication"))
+                        {
+                            XmlNodeList telNodeChildren = currentItemNode.ChildNodes;
+                            for (int telChildIndex = 0; telChildIndex < telNodeChildren.Count; telChildIndex++)
+                            {
+                                if (!string.IsNullOrEmpty(telNodeChildren[telChildIndex].LocalName) &&
+                                    telNodeChildren[telChildIndex].LocalName.Equals("CompleteNumber"))
+                                {
+                                    phone = telNodeChildren[telChildIndex].InnerText;
+                                }
+                            }
+                        }
+                        if (currentItemNode.LocalName.Equals("EmailURIUniversalCommunication"))
+                        {
+                            XmlNodeList emailNodeChildren = currentItemNode.ChildNodes;
+                            for (int emailChildIndex = 0; emailChildIndex < emailNodeChildren.Count; emailChildIndex++)
+                            {
+                                if (!string.IsNullOrEmpty(emailNodeChildren[emailChildIndex].LocalName) &&
+                                    emailNodeChildren[emailChildIndex].LocalName.Equals("URIID"))
+                                {
+                                    email = emailNodeChildren[emailChildIndex].InnerText;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
 
-		public string? getName()
+        public string? getName()
 		{
 			return name;
 		}

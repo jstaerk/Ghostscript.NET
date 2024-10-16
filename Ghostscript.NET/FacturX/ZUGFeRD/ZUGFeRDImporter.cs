@@ -27,10 +27,6 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 
     using Item = Ghostscript.NET.FacturX.ZUGFeRD.Item;
     using Product = Ghostscript.NET.FacturX.ZUGFeRD.Product;
-    using Document = org.w3c.dom.Document;
-    using Node = org.w3c.dom.Node;
-    using NodeList = org.w3c.dom.NodeList;
-    using SAXException = org.xml.sax.SAXException;
 
     public class ZUGFeRDImporter
     {
@@ -53,10 +49,6 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
         /// XMP metadata
         /// </summary>
         private string xmpString = null; // XMP metadata
-        /// <summary>
-        /// parsed Document
-        /// </summary>
-        private Document document;
 
         private readonly ILogger<ZUGFeRDImporter> _logger;
 

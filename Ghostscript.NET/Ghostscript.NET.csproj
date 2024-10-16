@@ -51,7 +51,6 @@
     <FileVersion>1.2.3</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="IKVM" Version="8.1.5717.0" />
     <PackageReference Include="itext7" Version="8.0.3" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.3" />
     <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
