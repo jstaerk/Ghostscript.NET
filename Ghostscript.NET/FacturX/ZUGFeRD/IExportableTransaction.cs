@@ -1,4 +1,4 @@
-﻿using java.math;
+﻿
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
 	public interface IExportableTransaction
@@ -354,9 +354,9 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the total sum (incl. VAT) of prepayments, i.e. the difference between GrandTotalAmount and DuePayableAmount
 		 */
-		BigDecimal getTotalPrepaidAmount()
+		decimal getTotalPrepaidAmount()
 		{
-			return BigDecimal.ZERO;
+			return decimal.Zero;
 		}
 
 

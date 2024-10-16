@@ -1094,7 +1094,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
         //ORIGINAL LINE: final org.w3c.dom.NodeList tradeAgreementChildren = node.getChildNodes();
                                             NodeList tradeAgreementChildren = node.getChildNodes();
                                             node = getNodeByName(tradeAgreementChildren, "ChargeAmount");
-                                            lineItem.setPrice(tryBigDecimal(getNodeValue(node)));
+                                            lineItem.setPrice(trydecimal(getNodeValue(node)));
                                             node = getNodeByName(tradeAgreementChildren, "BasisQuantity");
                                             if (node != null && node.getAttributes() != null)
                                             {
@@ -1112,7 +1112,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                                         if (node != null)
                                         {
                                             node = getNodeByName(node.getChildNodes(), "ChargeAmount");
-                                            lineItem.setGrossPrice(tryBigDecimal(getNodeValue(node)));
+                                            lineItem.setGrossPrice(trydecimal(getNodeValue(node)));
                                         }
                                         break;
 
@@ -1140,7 +1140,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                                     case "SpecifiedLineTradeDelivery":
                                     case "SpecifiedSupplyChainTradeDelivery":
                                         node = getNodeByName(nn.getChildNodes(), "BilledQuantity");
-                                        lineItem.setQuantity(tryBigDecimal(getNodeValue(node)));
+                                        lineItem.setQuantity(trydecimal(getNodeValue(node)));
                                         break;
 
                                     case "SpecifiedLineTradeSettlement":
@@ -1148,21 +1148,21 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                                         if (node != null)
                                         {
                                             node = getNodeByName(node.getChildNodes(), "RateApplicablePercent");
-                                            lineItem.getProduct().setVATPercent(tryBigDecimal(getNodeValue(node)));
+                                            lineItem.getProduct().setVATPercent(trydecimal(getNodeValue(node)));
                                         }
 
                                         node = getNodeByName(nn.getChildNodes(), "ApplicableTradeTax");
                                         if (node != null)
                                         {
                                             node = getNodeByName(node.getChildNodes(), "CalculatedAmount");
-                                            lineItem.setTax(tryBigDecimal(getNodeValue(node)));
+                                            lineItem.setTax(trydecimal(getNodeValue(node)));
                                         }
 
                                         node = getNodeByName(nn.getChildNodes(), "SpecifiedTradeSettlementLineMonetarySummation");
                                         if (node != null)
                                         {
                                             node = getNodeByName(node.getChildNodes(), "LineTotalAmount");
-                                            lineItem.setLineTotalAmount(tryBigDecimal(getNodeValue(node)));
+                                            lineItem.setLineTotalAmount(trydecimal(getNodeValue(node)));
                                         }
                                         break;
                                     case "SpecifiedSupplyChainTradeSettlement":
@@ -1172,21 +1172,21 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                                         if (node != null)
                                         {
                                             node = getNodeByName(node.getChildNodes(), "ApplicablePercent");
-                                            lineItem.getProduct().setVATPercent(tryBigDecimal(getNodeValue(node)));
+                                            lineItem.getProduct().setVATPercent(trydecimal(getNodeValue(node)));
                                         }
 
                                         node = getNodeByName(nn.getChildNodes(), "ApplicableTradeTax");
                                         if (node != null)
                                         {
                                             node = getNodeByName(node.getChildNodes(), "CalculatedAmount");
-                                            lineItem.setTax(tryBigDecimal(getNodeValue(node)));
+                                            lineItem.setTax(trydecimal(getNodeValue(node)));
                                         }
 
                                         node = getNodeByName(nn.getChildNodes(), "SpecifiedTradeSettlementMonetarySummation");
                                         if (node != null)
                                         {
                                             node = getNodeByName(node.getChildNodes(), "LineTotalAmount");
-                                            lineItem.setLineTotalAmount(tryBigDecimal(getNodeValue(node)));
+                                            lineItem.setLineTotalAmount(trydecimal(getNodeValue(node)));
                                         }
                                         break;
                                 }
@@ -1313,10 +1313,10 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                 }
 
                 /// <summary>
-                /// tries to convert an String to BigDecimal. </summary>
+                /// tries to convert an String to decimal. </summary>
                 /// <param name="nodeValue"> The value as String </param>
-                /// <returns> a BigDecimal with the value provides as String or a BigDecimal with value 0.00 if an error occurs </returns>
-                private decimal tryBigDecimal(string nodeValue)
+                /// <returns> a decimal with the value provides as String or a decimal with value 0.00 if an error occurs </returns>
+                private decimal trydecimal(string nodeValue)
                 {
                     try
                     {

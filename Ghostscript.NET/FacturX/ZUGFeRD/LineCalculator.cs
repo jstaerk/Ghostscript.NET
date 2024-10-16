@@ -1,16 +1,16 @@
 
-using java.math;
+
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
 
 	public class LineCalculator
 	{
-		private BigDecimal price;
-		private BigDecimal priceGross;
-		private BigDecimal itemTotalNetAmount;
-		private BigDecimal itemTotalVATAmount;
-		private BigDecimal allowance = BigDecimal.ZERO;
-		private BigDecimal charge = BigDecimal.ZERO;
+		private decimal price;
+		private decimal priceGross;
+		private decimal itemTotalNetAmount;
+		private decimal itemTotalVATAmount;
+		private decimal allowance = decimal.Zero;
+		private decimal charge = decimal.Zero;
 
 		//JAVA TO C# CONVERTER WARNING: The following constructor is declared outside of its associated class:
 		//ORIGINAL LINE: public LineCalculator(IZUGFeRDExportableItem currentItem)
@@ -38,52 +38,52 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 			//JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 			//ORIGINAL LINE: @decimal multiplicator = currentItem.getProduct().getVATPercent().divide(100);
 			*/
-			BigDecimal multiplicator = currentItem.getProduct().getVATPercent().divide(new BigDecimal(100));
+			decimal multiplicator = currentItem.getProduct().getVATPercent() / 100;
 			priceGross = currentItem.getPrice(); // see https://github.com/ZUGFeRD/mustangproject/issues/159
-			price = priceGross.subtract(allowance).add(charge);
-			itemTotalNetAmount = currentItem.getQuantity().multiply(price).divide(currentItem.getBasisQuantity()).setScale(2, BigDecimal.ROUND_HALF_UP);
-			itemTotalVATAmount = itemTotalNetAmount.multiply(multiplicator);
+			price = priceGross - allowance + charge;
+			itemTotalNetAmount = Math.Round(currentItem.getQuantity() * price / currentItem.getBasisQuantity(), 2, MidpointRounding.AwayFromZero);
+			itemTotalVATAmount = itemTotalNetAmount * multiplicator;
 
 		}
 
 
-		public virtual BigDecimal getPrice()
+		public virtual decimal getPrice()
 		{
 
 			return price;
 
 		}
 
-		public virtual BigDecimal getItemTotalNetAmount()
+		public virtual decimal getItemTotalNetAmount()
 		{
 
 			return itemTotalNetAmount;
 
 		}
 
-		public virtual BigDecimal getItemTotalVATAmount()
+		public virtual decimal getItemTotalVATAmount()
 		{
 			return itemTotalVATAmount;
 		}
 
-		public virtual BigDecimal getItemTotalGrossAmount()
+		public virtual decimal getItemTotalGrossAmount()
 		{
 			return itemTotalNetAmount;
 		}
 
-		public virtual BigDecimal getPriceGross()
+		public virtual decimal getPriceGross()
 		{
 			return priceGross;
 		}
 
-		public virtual void addAllowance(BigDecimal b)
+		public virtual void addAllowance(decimal b)
 		{
-			allowance = allowance.add(b);
+			allowance += b;
 		}
 
-		public virtual void addCharge(BigDecimal b)
+		public virtual void addCharge(decimal b)
 		{
-			charge = charge.add(b);
+			charge += b;
 		}
 
 

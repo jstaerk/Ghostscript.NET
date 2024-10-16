@@ -30,7 +30,7 @@ using System.Diagnostics;
 using Ghostscript.NET;
 using Ghostscript.NET.Processor;
 using System.IO;
-using java.math;
+
 using Ghostscript.NET.FacturX.ZUGFeRD;
 
 
@@ -44,7 +44,7 @@ namespace Ghostscript.NET.Samples
         {
             
             Invoice i = (new Invoice()).setDueDate(DateTime.Now).setIssueDate(DateTime.Now).setDeliveryDate(DateTime.Now).setSender((new TradeParty("Test company", "teststr", "55232", "teststadt", "DE")).addTaxID("DE4711").addVATID("DE0815").setContact(new Contact("Hans Test", "+49123456789", "test@example.org")).addBankDetails(new BankDetails("DE12500105170648489890", "COBADEFXXX"))).setRecipient(new TradeParty("Franz Müller", "teststr.12", "55232", "Entenhausen", "DE")).setReferenceNumber("991-01484-64").setNumber("123").
-                    addItem(new Item(new Product("Testprodukt", "", "C62", new BigDecimal(19)), new BigDecimal("1.0"), new BigDecimal("1.0")));
+                    addItem(new Item(new Product("Testprodukt", "", "C62", new decimal(19)), new decimal("1.0"), new decimal("1.0")));
 
             ZUGFeRD2PullProvider zf2p = new ZUGFeRD2PullProvider();
             zf2p.setProfile(Profiles.getByName("XRechnung"));

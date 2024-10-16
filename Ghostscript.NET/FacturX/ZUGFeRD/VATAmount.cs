@@ -1,41 +1,41 @@
 using System;
 
-using java.math;
+
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
 
 	public class VATAmount
 	{
 
-		public VATAmount(BigDecimal basis, BigDecimal calculated, string categoryCode) : base()
+		public VATAmount(decimal basis, decimal calculated, string categoryCode) : base()
 		{
 			this.basis = basis;
 			this.calculated = calculated;
 			this.categoryCode = categoryCode;
 		}
 
-		internal BigDecimal basis, calculated, applicablePercent;
+		internal decimal basis, calculated, applicablePercent;
 
 		internal string categoryCode;
 
-		public virtual BigDecimal getApplicablePercent()
+		public virtual decimal getApplicablePercent()
 		{
 
 			return applicablePercent;
 		}
-		public virtual VATAmount setApplicablePercent(BigDecimal value)
+		public virtual VATAmount setApplicablePercent(decimal value)
 		{
 			this.applicablePercent = value;
 			return this;
 		}
 
 
-		public virtual BigDecimal getBasis()
+		public virtual decimal getBasis()
 		{
 
 			return basis;
 		}
-		public virtual VATAmount setBasis(BigDecimal value)
+		public virtual VATAmount setBasis(decimal value)
 		{
 			this.basis = value.setScale(2, RoundingMode.HALF_UP);
 			return this;
@@ -46,12 +46,12 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 
 
 
-		public virtual BigDecimal getCalculated() {
+		public virtual decimal getCalculated() {
 			return calculated;
 		}
 
 
-		public virtual VATAmount setCalculated(BigDecimal value) {
+		public virtual VATAmount setCalculated(decimal value) {
 
 			this.calculated = value;
 			return this;

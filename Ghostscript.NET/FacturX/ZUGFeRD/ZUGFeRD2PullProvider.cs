@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using java.math;
+
 using System.Text.RegularExpressions;
 
 
@@ -28,24 +28,24 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
         {
         }
 
-        private string vatFormat(BigDecimal value)
+        private string vatFormat(decimal value)
         {
-            return XMLTools.nDigitFormat(value, 2);
+            return XMLTools.ScaleDecimal(value, 2);
         }
 
-        private string currencyFormat(BigDecimal value)
+        private string currencyFormat(decimal value)
         {
-            return XMLTools.nDigitFormat(value, 2);
+            return XMLTools.ScaleDecimal(value, 2);
         }
 
-        private string priceFormat(BigDecimal value)
+        private string priceFormat(decimal value)
         {
-            return XMLTools.nDigitFormat(value, 4);
+            return XMLTools.ScaleDecimal(value, 4);
         }
 
-        private string quantityFormat(BigDecimal value)
+        private string quantityFormat(decimal value)
         {
-            return XMLTools.nDigitFormat(value, 4);
+            return XMLTools.ScaleDecimal(value, 4);
         }
 
         public byte[] getXML()
@@ -366,8 +366,8 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                         hasDueDate = false;
                     }
             */
-            Dictionary<BigDecimal, VATAmount> VATPercentAmountMap = calc.getVATPercentAmountMap();
-            foreach (BigDecimal currentTaxPercent in VATPercentAmountMap.Keys)
+            Dictionary<decimal, VATAmount> VATPercentAmountMap = calc.getVATPercentAmountMap();
+            foreach (decimal currentTaxPercent in VATPercentAmountMap.Keys)
             {
                 VATAmount amount = VATPercentAmountMap[currentTaxPercent];
                 if (amount != null)
@@ -395,9 +395,9 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                     if ((trans.getZFCharges() != null) && (trans.getZFCharges().length > 0))
                     {
 
-                        foreach (BigDecimal currentTaxPercent in VATPercentAmountMap.Keys)
+                        foreach (decimal currentTaxPercent in VATPercentAmountMap.Keys)
                         {
-                            if (calc.getChargesForPercent(currentTaxPercent).compareTo(BigDecimal.ZERO) != 0)
+                            if (calc.getChargesForPercent(currentTaxPercent).compareTo(decimal.Zero) != 0)
                             {
 
 
@@ -410,9 +410,9 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 
                     if ((trans.getZFAllowances() != null) && (trans.getZFAllowances().length > 0))
                     {
-                        foreach (BigDecimal currentTaxPercent in VATPercentAmountMap.Keys)
+                        foreach (decimal currentTaxPercent in VATPercentAmountMap.Keys)
                         {
-                            if (calc.getAllowancesForPercent(currentTaxPercent).compareTo(BigDecimal.ZERO) != 0)
+                            if (calc.getAllowancesForPercent(currentTaxPercent).compareTo(decimal.Zero) != 0)
                             {
                                 xml = xml + "	 <ram:SpecifiedTradeAllowanceCharge>\n" + "        <ram:ChargeIndicator>\n" + "          <udt:Indicator>false</udt:Indicator>\n" + "        </ram:ChargeIndicator>\n" + "        <ram:ActualAmount>" + currencyFormat(calc.getAllowancesForPercent(currentTaxPercent)) + "</ram:ActualAmount>\n" + "        <ram:Reason>" + XMLTools.encodeXML(calc.getAllowanceReasonForPercent(currentTaxPercent)) + "</ram:Reason>\n" + "        <ram:CategoryTradeTax>\n" + "          <ram:TypeCode>VAT</ram:TypeCode>\n" + "          <ram:CategoryCode>" + VATPercentAmountMap[currentTaxPercent].getCategoryCode() + "</ram:CategoryCode>\n" + "          <ram:RateApplicablePercent>" + vatFormat(currentTaxPercent) + "</ram:RateApplicablePercent>\n" + "        </ram:CategoryTradeTax>\n" + "      </ram:SpecifiedTradeAllowanceCharge>	\n";
                             }

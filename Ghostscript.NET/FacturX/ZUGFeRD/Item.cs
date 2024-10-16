@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using java.math;
+
 
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
@@ -15,7 +15,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
     //ORIGINAL LINE: @JsonIgnoreProperties(ignoreUnknown = true) public class Item implements org.mustangproject.ZUGFeRD.IZUGFeRDExportableItem
     public class Item : IZUGFeRDExportableItem
 	{
-		protected internal BigDecimal price, quantity, tax, grossPrice, lineTotalAmount;
+		protected internal decimal price, quantity, tax, grossPrice, lineTotalAmount;
 		protected internal DateTime? detailedDeliveryPeriodFrom = null, detailedDeliveryPeriodTo = null;
 		protected internal string id;
 		protected internal string referencedLineID = null;
@@ -30,7 +30,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// <param name="product"> contains the products name, tax rate, and unit </param>
 		/// <param name="price"> the base price of one item the product </param>
 		/// <param name="quantity"> the number, dimensions or the weight of the delivered product or good in this context </param>
-		public Item(Product product, BigDecimal price, BigDecimal quantity)
+		public Item(Product product, decimal price, decimal quantity)
 		{
 			this.price = price;
 			this.quantity = quantity;
@@ -64,7 +64,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 			return referencedLineID;
 		}
 
-		public virtual BigDecimal getLineTotalAmount()
+		public virtual decimal getLineTotalAmount()
 		{
 			return lineTotalAmount;
 		}
@@ -73,13 +73,13 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// should only be set by calculator classes or maybe when reading from XML </summary>
 		/// <param name="lineTotalAmount"> price*quantity of this line </param>
 		/// <returns> fluent setter </returns>
-		public virtual Item setLineTotalAmount(BigDecimal lineTotalAmount)
+		public virtual Item setLineTotalAmount(decimal lineTotalAmount)
 		{
 			this.lineTotalAmount = lineTotalAmount;
 			return this;
 		}
 
-		public virtual BigDecimal getGrossPrice()
+		public virtual decimal getGrossPrice()
 		{
 			return grossPrice;
 		}
@@ -90,19 +90,19 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// the list price without VAT (sic!), refer to EN16931-1 for definition </summary>
 		/// <param name="grossPrice"> the list price without VAT </param>
 		/// <returns> fluent setter </returns>
-		public virtual Item setGrossPrice(BigDecimal grossPrice)
+		public virtual Item setGrossPrice(decimal grossPrice)
 		{
 			this.grossPrice = grossPrice;
 			return this;
 		}
 
 
-		public virtual BigDecimal getTax()
+		public virtual decimal getTax()
 		{
 			return tax;
 		}
 
-		public virtual Item setTax(BigDecimal tax)
+		public virtual Item setTax(decimal tax)
 		{
 			this.tax = tax;
 			return this;
@@ -119,12 +119,12 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 			return id;
 		}
 
-		public BigDecimal getPrice()
+		public decimal getPrice()
 		{
 			return price;
 		}
 
-		public virtual Item setPrice(BigDecimal price)
+		public virtual Item setPrice(decimal price)
 		{
 			this.price = price;
 			return this;
@@ -132,12 +132,12 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 
 
 
-		public BigDecimal getQuantity()
+		public decimal getQuantity()
 		{
 			return quantity;
 		}
 
-		public virtual Item setQuantity(BigDecimal quantity)
+		public virtual Item setQuantity(decimal quantity)
 		{
 			this.quantity = quantity;
 			return this;

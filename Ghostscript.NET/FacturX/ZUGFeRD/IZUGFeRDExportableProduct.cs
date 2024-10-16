@@ -1,4 +1,4 @@
-using java.math;
+
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
 	public interface IZUGFeRDExportableProduct
@@ -64,7 +64,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// VAT percent of the product (e.g. 19, or 5.1 if you like)
 		/// </summary>
 		/// <returns> VAT percent of the product </returns>
-		BigDecimal getVATPercent();
+		decimal getVATPercent();
 
 		bool getIntraCommunitySupply()
 		{
@@ -86,7 +86,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 				{
 					return "AE"; // "AE"; // to out of europe...
 				}
-				else if (getVATPercent().compareTo(BigDecimal.ZERO) == 0)
+				else if (getVATPercent().compareTo(decimal.Zero) == 0)
 				{
 					return "Z"; // "Z"; // zero rated goods
 				}

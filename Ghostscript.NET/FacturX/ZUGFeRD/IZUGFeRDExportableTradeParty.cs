@@ -1,4 +1,4 @@
-	using java.math;
+	
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
 

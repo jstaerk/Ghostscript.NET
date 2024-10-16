@@ -20,7 +20,7 @@
  */
  using System;
 using System.Collections.Generic;
-using java.math;
+
 
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
@@ -36,7 +36,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		protected internal string documentName = null, documentCode = null, number = null, ownOrganisationFullPlaintextInfo = null, referenceNumber = null, shipToOrganisationID = null, shipToOrganisationName = null, shipToStreet = null, shipToZIP = null, shipToLocation = null, shipToCountry = null, buyerOrderReferencedDocumentID = null, invoiceReferencedDocumentID = null, buyerOrderReferencedDocumentIssueDateTime = null, ownForeignOrganisationID = null, ownOrganisationName = null, currency = null, paymentTermDescription = null;
 		protected internal DateTime? issueDate = null, dueDate = null;
 		protected DateTime? deliveryDate = null;
-		protected internal BigDecimal totalPrepaidAmount = null;
+		protected internal decimal? totalPrepaidAmount = null;
 		protected internal TradeParty sender = null, recipient = null, deliveryAddress = null;
 //JAVA TO C# CONVERTER TODO TASK: Most Java annotations will not have direct .NET equivalent attributes:
 //ORIGINAL LINE: @JsonDeserialize(contentAs=Item.class) protected java.util.ArrayList<IZUGFeRDExportableItem> ZFItems = null;
@@ -517,14 +517,12 @@ public virtual Invoice setOwnTaxID(string ownTaxID)
 		return this;
 	}
 
-	public BigDecimal getTotalPrepaidAmount()
+	public decimal getTotalPrepaidAmount()
 	{
-		
-			return totalPrepaidAmount;
-		
+		return totalPrepaidAmount ?? decimal.Zero;
 	}
 
-	public virtual Invoice setTotalPrepaidAmount(BigDecimal totalPrepaidAmount)
+	public virtual Invoice setTotalPrepaidAmount(decimal totalPrepaidAmount)
 	{
 		this.totalPrepaidAmount = totalPrepaidAmount;
 		return this;

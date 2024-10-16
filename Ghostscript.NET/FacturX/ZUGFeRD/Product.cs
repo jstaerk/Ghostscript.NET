@@ -1,4 +1,4 @@
-using java.math;
+
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
 	
@@ -11,7 +11,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 	public class Product : IZUGFeRDExportableProduct
 	{
 		protected internal string unit, name, description, sellerAssignedID, buyerAssignedID;
-		protected internal BigDecimal VATPercent;
+		protected internal decimal VATPercent;
 //JAVA TO C# CONVERTER NOTE: Fields cannot have the same name as methods of the current type:
 		protected internal bool isReverseCharge_Conflict = false;
 //JAVA TO C# CONVERTER NOTE: Fields cannot have the same name as methods of the current type:
@@ -24,7 +24,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// <param name="description"> product long name </param>
 		/// <param name="unit"> a two/three letter UN/ECE rec 20 unit code, e.g. "C62" for piece </param>
 		/// <param name="VATPercent"> product vat rate </param>
-		public Product(string name, string description, string unit, BigDecimal VATPercent)
+		public Product(string name, string description, string unit, decimal VATPercent)
 		{
 			this.unit = unit;
 			this.name = name;
@@ -93,7 +93,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		public virtual Product setReverseCharge()
 		{
 			isReverseCharge_Conflict = true;
-			setVATPercent(BigDecimal.ZERO);
+			setVATPercent(decimal.Zero);
 			return this;
 		}
 
@@ -105,7 +105,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		public virtual Product setIntraCommunitySupply()
 		{
 			isIntraCommunitySupply_Conflict = true;
-			setVATPercent(BigDecimal.ZERO);
+			setVATPercent(decimal.Zero);
 			return this;
 		}
 
@@ -155,7 +155,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 			return this;
 		}
 
-		public  BigDecimal getVATPercent()
+		public  decimal getVATPercent()
 		{
 			return VATPercent;
 		}
@@ -165,7 +165,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// VAT rate of the product </summary>
 		/// <param name="VATPercent"> vat rate of the product </param>
 		/// <returns> fluent setter </returns>
-		public virtual Product setVATPercent(BigDecimal VATPercent)
+		public virtual Product setVATPercent(decimal VATPercent)
 		{
 			this.VATPercent = VATPercent;
 			return this;

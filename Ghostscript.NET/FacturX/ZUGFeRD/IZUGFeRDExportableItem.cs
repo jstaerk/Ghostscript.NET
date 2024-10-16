@@ -1,5 +1,5 @@
 using System;
-using java.math;
+
 namespace Ghostscript.NET.FacturX.ZUGFeRD
 {
 	public interface IZUGFeRDExportableItem
@@ -39,9 +39,9 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// The price of one item excl. taxes
 		/// </summary>
 		/// <returns> The price of one item excl. taxes </returns>
-		BigDecimal getPrice();
+		decimal getPrice();
 
-		BigDecimal getValue()
+		decimal getValue()
 		{
 
 			return getPrice();
@@ -51,16 +51,17 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// how many get billed
 		/// </summary>
 		/// <returns> the quantity of the item </returns>
-		BigDecimal getQuantity();
+		decimal getQuantity();
 
 		/// <summary>
 		/// how many items units per price
 		/// </summary>
 		/// <returns> item units per price </returns>
-		BigDecimal getBasisQuantity()
-		{
-			return BigDecimal.ONE.setScale(4);
-		}
+		decimal getBasisQuantity()
+        {
+            const int scale = 4;
+            return Math.Round(decimal.One, scale, MidpointRounding.AwayFromZero);
+        }
 
 		/// <summary>
 		///*

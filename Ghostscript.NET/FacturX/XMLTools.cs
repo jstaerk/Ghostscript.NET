@@ -1,6 +1,7 @@
 using System;
+using System.Globalization;
 using System.Text;
-using java.math;
+
 using System.Security;
 
 namespace Ghostscript.NET.FacturX
@@ -23,25 +24,15 @@ namespace Ghostscript.NET.FacturX
 
 		}
 
-
-		public static string nDigitFormat(BigDecimal value, int scale)
+        /// <summary>
+        /// Rounds the <paramref name="value"/> first then turn to string with fixed floating points defined by <paramref name="scale"/>
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="scale">The scale.</param>
+        /// <returns></returns>
+        public static string ScaleDecimal(decimal value, int scale)
 		{
-			/*
-			 * I needed 123,45, locale independent.I tried
-			 * NumberFormat.getCurrencyInstance().format( 12345.6789 ); but that is locale
-			 * specific.I also tried DecimalFormat df = new DecimalFormat( "0,00" );
-			 * df.setDecimalSeparatorAlwaysShown(true); df.setGroupingUsed(false);
-			 * DecimalFormatSymbols symbols = new DecimalFormatSymbols();
-			 * symbols.setDecimalSeparator(','); symbols.setGroupingSeparator(' ');
-			 * df.setDecimalFormatSymbols(symbols);
-			 *
-			 * but that would not switch off grouping. Although I liked very much the
-			 * (incomplete) "BNF diagram" in
-			 * http://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html in the
-			 * end I decided to calculate myself and take eur+sparator+cents
-			 *
-			 */
-			return value.setScale(scale, RoundingMode.HALF_UP).toPlainString();
+			return Math.Round(value, scale, MidpointRounding.AwayFromZero).ToString($"F{scale}");
 
 		}
 
