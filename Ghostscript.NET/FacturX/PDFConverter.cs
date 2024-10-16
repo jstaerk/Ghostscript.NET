@@ -77,16 +77,19 @@ namespace Ghostscript.NET.FacturX
             mXMLOutFile = pXMLOutFile;
         }
 
-
-
-        public void prepareICC()
+        public void PrepareICC()
         {
-            var embeddedProvider = new EmbeddedFileProvider(Assembly.GetExecutingAssembly());
-            using (var reader = embeddedProvider.GetFileInfo("assets\\AdobeRGB1998.icc").CreateReadStream())
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            using Stream? stream = assembly.GetManifestResourceStream("Ghostscript.NET.FacturX.assets.AdobeRGB1998.icc");
+            if (stream != null)
             {
-                byte[] data = new BinaryReader(reader).ReadBytes((int)reader.Length);
-                string tempfilename = Path.GetTempPath() + "AdobeRGB1998.icc";
+                byte[] data = new BinaryReader(stream).ReadBytes((int)stream.Length);
+                string tempfilename = Path.Combine(Path.GetTempPath(), "AdobeRGB1998.icc");
                 File.WriteAllBytes(tempfilename, data);
+            }
+            else
+            {
+                throw new FileNotFoundException("Embedded resource not found: AdobeRGB1998.icc");
             }
         }
 
@@ -393,7 +396,7 @@ bind def
             file_GSDLL_DLL = gsdll;
             gsVersion = new GhostscriptVersionInfo(file_GSDLL_DLL);
 
-            this.prepareICC();
+            PrepareICC();
 
             // based on https://github.com/jhabjan/Ghostscript.NET/blob/master/Ghostscript.NET.Samples/Samples/ProcessorSample1.cs
             if (!File.Exists(file_GSDLL_DLL))
