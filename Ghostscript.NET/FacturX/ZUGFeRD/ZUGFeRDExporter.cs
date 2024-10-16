@@ -9,23 +9,23 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 
     public class ZUGFeRDExporter
     {
-        protected String? gsDLL = null;
-        protected String? sourcePDF = null;
+        protected string? gsDLL = null;
+        protected string? sourcePDF = null;
         protected bool noSourceCopy = false;
-        protected String profile = "EN16931";
+        protected string profile = "EN16931";
         protected int version = 2;
         protected IExportableTransaction? trans = null;
 
-        public ZUGFeRDExporter(String gsDLL)
+        public ZUGFeRDExporter(string gsDLL)
         {
             this.gsDLL = gsDLL;
         }
-        public ZUGFeRDExporter load(String PDFfilename)
+        public ZUGFeRDExporter load(string PDFfilename)
         {
-            String basename=Path.GetFileName(PDFfilename);
+            string basename=Path.GetFileName(PDFfilename);
             this.sourcePDF = Path.GetTempPath() + basename;
-            String d1=Path.GetDirectoryName(PDFfilename)+Path.DirectorySeparatorChar;
-            String d2=Path.GetTempPath();
+            string d1=Path.GetDirectoryName(PDFfilename)+Path.DirectorySeparatorChar;
+            string d2=Path.GetTempPath();
             if (d1.Equals(Path.GetTempPath())) {
                 noSourceCopy=true;
             } else {
@@ -45,14 +45,14 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
             return this;
         }
 
-        public ZUGFeRDExporter setProfile(String profile)
+        public ZUGFeRDExporter setProfile(string profile)
         {
             this.profile = profile;
             return this;
         }
 
 
-        public void export(String targetFilename)
+        public void export(string targetFilename)
         {
 
             PDFConverter pc = new PDFConverter(sourcePDF, targetFilename);

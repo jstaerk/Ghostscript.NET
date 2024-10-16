@@ -52,7 +52,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		/// <summary>
 		///*
 		/// how the seller identifies this type of product </summary>
-		/// <param name="sellerAssignedID"> a unique String </param>
+		/// <param name="sellerAssignedID"> a unique string </param>
 		/// <returns> fluent setter </returns>
 		public virtual Product setSellerAssignedID(string sellerAssignedID)
 		{

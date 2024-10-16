@@ -60,7 +60,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 
 		/// 
 		/// @deprecated Use <seealso cref="getCategoryCode() instead"/> 
-		/// <returns> String with category code </returns>
+		/// <returns> string with category code </returns>
 		[Obsolete("Use <seealso cref=\"getCategoryCode() instead\"/>")]
 		public virtual string getDocumentCode()
 		{
@@ -81,7 +81,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 
 			return categoryCode;
 		}
-		public virtual VATAmount setCategoryCode(String value)
+		public virtual VATAmount setCategoryCode(string value)
 		{
 			this.categoryCode = value;
 			return this;

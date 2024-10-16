@@ -244,7 +244,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                 string xml = enc.GetString(xmlBytes);
 
                 if (xmlBytes.Length > 3 & xmlBytes[0] == 239 & xmlBytes[1] == 187 & xmlBytes[2] == 191)
-                    // has a UTF8 BOM of three bytes, which is converted to ONE single unicode character in the String
+                    // has a UTF8 BOM of three bytes, which is converted to ONE single unicode character in the string
                     xml = xml.Substring(1);
 
 
@@ -845,7 +845,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                 /// <param name="meta"> raw XML to be set </param>
                 /// <exception cref="IOException"> if raw can not be set </exception>
         //JAVA TO C# CONVERTER WARNING: Method 'throws' clauses are not available in C#:
-        //ORIGINAL LINE: public void setMeta(String meta) throws java.io.IOException
+        //ORIGINAL LINE: public void setMeta(string meta) throws java.io.IOException
                 public virtual void setMeta(string meta)
                 {
                     setRawXML(meta.GetBytes());
@@ -882,7 +882,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                     // SpecifiedExchangedDocumentContext is in the schema, so a relatively good
                     // indication if zugferd is present - better than just invoice
         //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-        //ORIGINAL LINE: final String meta = getMeta();
+        //ORIGINAL LINE: final string meta = getMeta();
                     string meta = getMeta();
                     return (!string.ReferenceEquals(meta, null)) && (meta.Length > 0) && ((meta.Contains("SpecifiedExchangedDocumentContext") || meta.Contains("ExchangedDocumentContext")));
                 }
@@ -1268,7 +1268,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
         //ORIGINAL LINE: final javax.xml.xpath.XPath xPath = xpathFact.newXPath();
                     XPath xPath = xpathFact.newXPath();
         //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-        //ORIGINAL LINE: final String s = path;
+        //ORIGINAL LINE: final string s = path;
                     string s = path;
 
                     try
@@ -1291,7 +1291,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                 /// <summary>
                 /// returns the value of an node </summary>
                 /// <param name="node"> the Node to get the value from </param>
-                /// <returns> A String or empty String, if no value was found </returns>
+                /// <returns> A string or empty string, if no value was found </returns>
                 private string getNodeValue(Node node)
                 {
                     if (node != null)
@@ -1305,9 +1305,9 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                 }
 
                 /// <summary>
-                /// tries to convert an String to decimal. </summary>
-                /// <param name="nodeValue"> The value as String </param>
-                /// <returns> a decimal with the value provides as String or a decimal with value 0.00 if an error occurs </returns>
+                /// tries to convert an string to decimal. </summary>
+                /// <param name="nodeValue"> The value as string </param>
+                /// <returns> a decimal with the value provides as string or a decimal with value 0.00 if an error occurs </returns>
                 private decimal trydecimal(string nodeValue)
                 {
                     try

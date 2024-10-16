@@ -8,7 +8,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 			 *
 			 * @return Name of document
 			 */
-		String getDocumentName()
+		string getDocumentName()
 		{
 			return "RECHNUNG";
 		}
@@ -18,7 +18,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 *
 		 * @return Code number of Document type, e.g. "380" for invoiceF
-		 *	String getDocumentCode() {
+		 *	string getDocumentCode() {
 			return DocumentCodeTypeConstants.INVOICE;
 		}*/
 
@@ -28,7 +28,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return invoice number
 		 */
-		String getNumber()
+		string getNumber()
 		{
 			return null;
 		}
@@ -57,7 +57,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 			return null;
 		}
 
-		String getContractReferencedDocument()
+		string getContractReferencedDocument()
 		{
 			return null;
 		}
@@ -80,7 +80,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return string with document subject
 		 */
-		String getSubjectNote()
+		string getSubjectNote()
 		{
 			return null;
 		}
@@ -137,7 +137,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return Tax ID (not VAT ID) of the sender
 		 */
-		String getOwnTaxID()
+		string getOwnTaxID()
 		{
 			if (getSender() != null)
 			{
@@ -155,7 +155,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return VAT ID (Umsatzsteueridentifikationsnummer) of the sender
 		 */
-		String getOwnVATID()
+		string getOwnVATID()
 		{
 			if (getSender() != null)
 			{
@@ -173,7 +173,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the sender's identification
 		 */
-		String getOwnForeignOrganisationID()
+		string getOwnForeignOrganisationID()
 		{
 			return null;
 		}
@@ -194,7 +194,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return three character currency of this invoice
 		 */
-		String getCurrency()
+		string getCurrency()
 		{
 			return "EUR";
 		}
@@ -205,7 +205,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return get payment terms
 		 */
-		String getPaymentTermDescription()
+		string getPaymentTermDescription()
 		{
 			return null;
 		}
@@ -236,7 +236,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the ID of the document this document refers to
 		 */
-		String getReferenceNumber()
+		string getReferenceNumber()
 		{
 			return null;
 		}
@@ -247,7 +247,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the sender's identification
 		 */
-		String getShipToOrganisationID()
+		string getShipToOrganisationID()
 		{
 			return null;
 		}
@@ -258,7 +258,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the consignee's organisation name
 		 */
-		String getShipToOrganisationName()
+		string getShipToOrganisationName()
 		{
 			return null;
 		}
@@ -269,7 +269,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return consignee street address
 		 */
-		String getShipToStreet()
+		string getShipToStreet()
 		{
 			return null;
 		}
@@ -280,7 +280,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return consignee postal code
 		 */
-		String getShipToZIP()
+		string getShipToZIP()
 		{
 			return null;
 		}
@@ -291,7 +291,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the consignee's city
 		 */
-		String getShipToLocation()
+		string getShipToLocation()
 		{
 			return null;
 		}
@@ -302,7 +302,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the consignee's two character country iso code
 		 */
-		String getShipToCountry()
+		string getShipToCountry()
 		{
 			return null;
 		}
@@ -313,7 +313,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the ID of the document
 		 */
-		String getSellerOrderReferencedDocumentID()
+		string getSellerOrderReferencedDocumentID()
 		{
 			return null;
 		}
@@ -322,7 +322,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the ID of the document
 		 */
-		String getBuyerOrderReferencedDocumentID()
+		string getBuyerOrderReferencedDocumentID()
 		{
 			return null;
 		}
@@ -332,7 +332,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the ID of the document
 		 */
-		String getInvoiceReferencedDocumentID()
+		string getInvoiceReferencedDocumentID()
 		{
 			return null;
 		}
@@ -343,7 +343,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 *
 		 * @return the IssueDateTime in format CCYY-MM-DDTHH:MM:SS
 		 */
-		String getBuyerOrderReferencedDocumentIssueDateTime()
+		string getBuyerOrderReferencedDocumentIssueDateTime()
 		{
 			return null;
 		}
@@ -404,17 +404,17 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		 * additional text description
 		 * @return an array of strings of document wide "includedNotes" (descriptive text values)
 		 */
-		String[] getNotes()
+		string[] getNotes()
 		{
 			return null;
 		}
 
-		String getSpecifiedProcuringProjectName()
+		string getSpecifiedProcuringProjectName()
 		{
 			return null;
 		}
 
-		String getSpecifiedProcuringProjectID()
+		string getSpecifiedProcuringProjectID()
 		{
 			return null;
 		}

@@ -37,7 +37,7 @@ namespace Ghostscript.NET.FacturX
 		}
 
 
-		public static string encodeXML(String s)
+		public static string encodeXML(string s)
 		{
 			 return SecurityElement.Escape(s);
 		}

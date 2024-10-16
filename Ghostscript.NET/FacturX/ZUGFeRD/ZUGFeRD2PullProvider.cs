@@ -13,7 +13,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
     {
 
         //// MAIN CLASS
-        protected internal String zugferdDateFormatting = "yyyyMMdd";
+        protected internal string zugferdDateFormatting = "yyyyMMdd";
         protected internal byte[] zugferdData;
         protected internal IExportableTransaction trans;
         protected internal TransactionCalculator calc;
@@ -162,7 +162,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
             this.calc = new TransactionCalculator(trans);
 
             bool hasDueDate = false;
-            String germanDateFormatting = "dd.MM.yyyy";
+            string germanDateFormatting = "dd.MM.yyyy";
 
             string exemptionReason = "";
 
@@ -311,7 +311,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
                         foreach (FileAttachment f in trans.getAdditionalReferencedDocuments())
                         {
             //JAVA TO C# CONVERTER WARNING: The original Java variable was marked 'final':
-            //ORIGINAL LINE: final String documentContent = new String(Base64.getEncoder().encodeToString(f.getData()));
+            //ORIGINAL LINE: final string documentContent = new string(Base64.getEncoder().encodeToString(f.getData()));
                             string documentContent = new string(Convert.ToBase64String(f.getData()));
                             xml = xml + "  <ram:AdditionalReferencedDocument>\n" + "    <ram:IssuerAssignedID>" + f.getFilename() + "</ram:IssuerAssignedID>\n" + "    <ram:TypeCode>916</ram:TypeCode>\n" + "    <ram:Name>" + f.getDescription() + "</ram:Name>\n" + "    <ram:AttachmentBinaryObject mimeCode=\"" + f.getMimetype() + "\"\n" + "      filename=\"" + f.getFilename() + "\">" + documentContent + "</ram:AttachmentBinaryObject>\n" + "  </ram:AdditionalReferencedDocument>\n";
                         }

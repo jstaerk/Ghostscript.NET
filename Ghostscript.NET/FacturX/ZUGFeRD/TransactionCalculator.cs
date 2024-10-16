@@ -84,7 +84,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
         ///*
         /// returns a (potentially concatenated) string of charge reasons, or "Charges" if none are defined </summary>
         /// <param name="percent"> a specific rate, or null for any rate </param>
-        /// <returns> the space separated String </returns>
+        /// <returns> the space separated string </returns>
         protected internal virtual string getChargeReasonForPercent(decimal percent)
         {
             IZUGFeRDAllowanceCharge[] charges = trans.getZFCharges();
@@ -117,7 +117,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
         ///*
         /// returns a (potentially concatenated) string of allowance reasons, or "Allowances", if none are defined </summary>
         /// <param name="percent"> a specific rate, or null for any rate </param>
-        /// <returns> the space separated String </returns>
+        /// <returns> the space separated string </returns>
         protected internal virtual string getAllowanceReasonForPercent(decimal percent)
         {
             IZUGFeRDAllowanceCharge[] allowances = trans.getZFAllowances();

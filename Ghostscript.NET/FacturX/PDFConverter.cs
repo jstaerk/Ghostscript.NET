@@ -1,19 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualBasic;
-using Ghostscript.NET;
 using Ghostscript.NET.Processor;
-using Microsoft.Extensions.FileProviders.Embedded;
-using Microsoft.Extensions.FileProviders;
 
 using Ghostscript.NET.FacturX.ZUGFeRD;
 /// <summary>
@@ -390,9 +378,8 @@ bind def
         ///     ''' Wandelt eine PDF-Datei (Dateiname in inputfile) in eine PDF A/3 (Outputfilename) um und hngt die aktuelle E-rechnung an 
         ///     ''' </summary>
         ///     ''' <returns>True wenn die Konvertierung funktioniert hat</returns>
-        public bool ConvertToPDFA3(String gsdll)
+        public bool ConvertToPDFA3(string gsdll)
         {
-
             file_GSDLL_DLL = gsdll;
             gsVersion = new GhostscriptVersionInfo(file_GSDLL_DLL);
 

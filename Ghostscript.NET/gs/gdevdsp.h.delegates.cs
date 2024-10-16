@@ -61,7 +61,7 @@ namespace Ghostscript.NET
 
     // added in v2
     [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-    public delegate int display_separation_callback(IntPtr handle, IntPtr device, Int32 component, String component_name, UInt16 c, UInt16 m, UInt16 y, UInt16 k);
+    public delegate int display_separation_callback(IntPtr handle, IntPtr device, Int32 component, string component_name, UInt16 c, UInt16 m, UInt16 y, UInt16 k);
 
     // added in v3
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
