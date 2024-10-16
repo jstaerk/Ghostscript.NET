@@ -37,7 +37,7 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 		}
 		public virtual VATAmount setBasis(decimal value)
 		{
-			this.basis = value.setScale(2, RoundingMode.HALF_UP);
+			this.basis = Math.Round(value, 2, MidpointRounding.AwayFromZero);
 			return this;
 
 		}
@@ -91,12 +91,12 @@ namespace Ghostscript.NET.FacturX.ZUGFeRD
 
 		public virtual VATAmount add(VATAmount v)
 		{
-			return new VATAmount(basis.add(v.getBasis()), calculated.add(v.getCalculated()), this.categoryCode);
+			return new VATAmount(basis + v.getBasis(), calculated + v.getCalculated(), this.categoryCode);
 		}
 
 		public virtual VATAmount subtract(VATAmount v)
 		{
-			return new VATAmount(basis.subtract(v.getBasis()), calculated.subtract(v.getCalculated()), this.categoryCode);
+			return new VATAmount(basis - v.getBasis(), calculated - v.getCalculated(), this.categoryCode);
 		}
 
 	}
